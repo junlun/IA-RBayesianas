@@ -10,18 +10,16 @@ class Recolector:
     
     @staticmethod
     def readFile(path):
-        print(os.path.join(Recolector.script_dir))
         thePath = os.path.join(Recolector.script_dir, path)
-        print(thePath)
-        #thePath = os.path.join(Recolector.ROOT_DIR,path)
         file=open(thePath,"r")
         lines = file.readlines()
         
         result =""
         for line in lines:
             result += line
-        return lines
+        return result 
     @staticmethod
     def readAllFiles(path):
+        basePath = path
+        
         return True
-print(Recolector.readFile("resources\prueba.txt"))
