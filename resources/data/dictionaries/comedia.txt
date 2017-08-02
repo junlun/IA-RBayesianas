@@ -1,0 +1,1 @@
+('cono', 7)('y', 5)('mi', 3)('gato', 3)('se', 3)('me', 3)('llama', 2)('que', 2)('acaricie', 2)('muertos', 2)('guantes', 1)('gusta', 1)('do', 1)('you', 1)('recall', 1)('a', 1)('daylight', 1)('mis', 1)('poro', 1)('to', 1)
