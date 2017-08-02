@@ -31,5 +31,10 @@ def readAllFiles(path):
             readAllFiles(newPath)    
 
     return textos
+def writeFile(path, source):
+    thePath = os.path.join(script_dir, path)
+    file=open(thePath,"w+")
+    file.write(source)
 
-print(readAllFiles("resources"))
+
+writeFile("resources\\mau.txt","vamos a calmarno\nyujuuu")
