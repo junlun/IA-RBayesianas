@@ -22,7 +22,7 @@ def readAllFiles(path):
     for directorio in names:
         newPath = os.path.join(basePath,directorio)
         if os.path.isfile(newPath):
-            array = textos.get(newPath,[])
+            array = textos.get(newPath.replace(directorio,""),[])
             array.append(readFile(newPath))
             textos[newPath.replace(directorio,"")] = array
         else:
