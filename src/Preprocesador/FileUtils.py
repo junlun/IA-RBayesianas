@@ -24,9 +24,9 @@ def readAllFiles(path):
         if os.path.isfile(newPath):
             folderName = os.path.basename(basePath)
             
-            array = textos.get(folderName,[])
-            array.append(readFile(newPath))
-            textos[folderName] = array
+            value = textos.get(folderName,"")
+            value +=readFile(newPath)
+            textos[folderName] = value
         else:
             readAllFiles(newPath)    
 
@@ -36,5 +36,4 @@ def writeFile(path, source):
     file=open(thePath,"w+")
     file.write(source)
 
-
-writeFile("resources\\mau.txt","vamos a calmarno\nyujuuu")
+print(readAllFiles("resources"))
