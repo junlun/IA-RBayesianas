@@ -12,14 +12,14 @@ class Recolector:
     def readFile(path):
         thePath = os.path.join(Recolector.script_dir, path)
         file=open(thePath,"r")
-        lines = file.readlines()
+        lines = file.read().lower()
         
-        result =""
-        for line in lines:
-            result += line
-        return result 
+        
+        return lines 
     @staticmethod
     def readAllFiles(path):
         basePath = path
-        
+
         return True
+
+print(Recolector.readFile("resources\prueba.txt"))
