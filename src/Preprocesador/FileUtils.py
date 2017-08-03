@@ -1,5 +1,6 @@
 import os
 import sys
+import codecs
 
 script_path = os.path.abspath(__file__) # i.e. /path/to/dir/foobar.py
 script_dir = os.path.split(script_path)[0] #i.e. /path/to/dir/
@@ -8,9 +9,9 @@ textos = dict()
 
 def readFile(path):
     thePath = os.path.join(script_dir, path)
-    file=open(thePath,"r")
+    file=codecs.open(thePath,"r",encoding='utf8')
     lines = file.read().lower()
-    
+    file.close()
     
     return lines 
 
@@ -31,9 +32,10 @@ def readAllFiles(path):
             readAllFiles(newPath)    
 
     return textos
+
 def writeFile(path, source):
     thePath = os.path.join(script_dir, path)
-    file=open(thePath,"w+")
+    file=codecs.open(thePath,"w+",encoding='utf8')
     file.write(source)
+    file.close()
 
-print(readAllFiles("resources"))

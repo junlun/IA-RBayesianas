@@ -10,10 +10,10 @@ def createDictionaries():
 def createDictionary(category, text):
     text = PreprocesadorUtils.discriminator(text)
     counter = PreprocesadorUtils.counter(text)
-    text = counter.most_common(20)
+    pairs = counter.most_common(20)
     texto = ""
-    for word in text:
-        texto += str(word)
+    for pair in pairs:
+        texto += pair[0] + "\n"
     FileUtils.writeFile("resources\\data\\dictionaries\\"+category+".txt", texto)
 
 createDictionaries()

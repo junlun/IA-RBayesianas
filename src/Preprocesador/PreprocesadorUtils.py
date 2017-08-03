@@ -12,6 +12,5 @@ def discriminator(text):
     return text
 
 def counter(text):
-    print(text)
     words = re.findall('\w+', text)
     return collections.Counter(words)
