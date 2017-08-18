@@ -60,6 +60,7 @@ def __readAllFilesNotFlatPrivate(path,textos2):
 
 def readAllFilesFileNames(path):
     return __readAllFilesFileNames(path,dict())
+
 def __readAllFilesFileNames(path,textos3):
     basePath = path
     names = os.listdir(path)
@@ -73,7 +74,7 @@ def __readAllFilesFileNames(path,textos3):
             value[directorio]=readFile(newPath)
             textos3[folderName] = value
         else:
-            __readAllFilesFileNames(newPath)  
+            __readAllFilesFileNames(newPath,textos3)  
          
     return textos3
 
