@@ -1,6 +1,7 @@
 import os
 import sys
 import codecs
+import collections
 
 script_path = os.path.abspath(__file__) # i.e. /path/to/dir/foobar.py
 script_dir = os.path.split(script_path)[0] #i.e. /path/to/dir/
@@ -76,3 +77,18 @@ def writeFile(path, source):
     file.write(source)
     file.close()
 
+def getNumberOfDocuments(path):
+    count = 0
+    dict = readAllFilesNotFlat(path)
+    for pair in dict:
+        count += pair[1].size()
+    return count
+
+def countWordInText(word, text):
+    res = 0
+    count = collections.Counter(text.split())
+    if word in count.keys():
+        res = count.get(word)
+
+    print(res)
+    return res
