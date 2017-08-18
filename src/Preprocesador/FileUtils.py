@@ -7,6 +7,7 @@ script_dir = os.path.split(script_path)[0] #i.e. /path/to/dir/
 script_dir = script_dir.replace("\src\Preprocesador","")
 textos = dict()
 
+
 def readFile(path):
     thePath = os.path.join(script_dir, path)
     file=codecs.open(thePath,"r",encoding='utf-8')
@@ -32,6 +33,24 @@ def readAllFiles(path):
             readAllFiles(newPath)    
 
     return textos
+
+def readAllFilesNotFlat(path):
+    result = dict()
+    basePath = path
+    names = os.listdir(path)
+    
+    for directorio in names:
+        newPath = os.path.join(basePath,directorio)
+        if os.path.isfile(newPath):
+            folderName = os.path.basename(basePath)
+            
+            value = result.get(folderName,[])
+            value.append(readFile(newPath))
+            result[folderName] = value
+        else:
+            readAllFiles(newPath)    
+
+    return result
 
 def writeFile(path, source):
     thePath = os.path.join(script_dir, path)
