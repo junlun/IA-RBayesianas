@@ -9,10 +9,10 @@ textos = dict()
 
 def readFile(path):
     thePath = os.path.join(script_dir, path)
-    file=codecs.open(thePath,"r",encoding='utf8')
+    file=codecs.open(thePath,"r",encoding='utf-8')
     lines = file.read().lower()
     file.close()
-    
+
     return lines 
 
 def readAllFiles(path):
@@ -35,7 +35,7 @@ def readAllFiles(path):
 
 def writeFile(path, source):
     thePath = os.path.join(script_dir, path)
-    file=codecs.open(thePath,"w+",encoding='utf8')
+    file=codecs.open(thePath,"w+",encoding='utf-8')
     file.write(source)
     file.close()
 
