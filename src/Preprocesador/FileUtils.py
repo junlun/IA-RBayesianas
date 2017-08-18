@@ -18,8 +18,10 @@ def readFile(path):
     file.close()
 
     return lines 
-
 def readAllFiles(path):
+    return __readAllFiles(path,dict())
+
+def __readAllFiles(path,textos):
     
     basePath = path
     names = os.listdir(path)
@@ -33,9 +35,9 @@ def readAllFiles(path):
             value +=readFile(newPath)
             textos[folderName] = value
         else:
-            readAllFiles(newPath)    
-
+            __readAllFiles(newPath,textos)    
     return textos
+
 def readAllFilesNotFlat(path):
     return __readAllFilesNotFlatPrivate(path,dict())
 
@@ -57,6 +59,8 @@ def __readAllFilesNotFlatPrivate(path,textos2):
     return textos2
 
 def readAllFilesFileNames(path):
+    return __readAllFilesFileNames(path,dict())
+def __readAllFilesFileNames(path,textos3):
     basePath = path
     names = os.listdir(path)
     
@@ -69,7 +73,7 @@ def readAllFilesFileNames(path):
             value[directorio]=readFile(newPath)
             textos3[folderName] = value
         else:
-            readAllFilesFileNames(newPath)  
+            __readAllFilesFileNames(newPath)  
          
     return textos3
 
