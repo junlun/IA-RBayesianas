@@ -6,6 +6,7 @@ script_path = os.path.abspath(__file__) # i.e. /path/to/dir/foobar.py
 script_dir = os.path.split(script_path)[0] #i.e. /path/to/dir/
 script_dir = script_dir.replace("\src\Preprocesador","")
 textos = dict()
+textos2 = dict()
 
 
 def readFile(path):
@@ -35,7 +36,7 @@ def readAllFiles(path):
     return textos
 
 def readAllFilesNotFlat(path):
-    result = dict()
+    
     basePath = path
     names = os.listdir(path)
     
@@ -44,13 +45,12 @@ def readAllFilesNotFlat(path):
         if os.path.isfile(newPath):
             folderName = os.path.basename(basePath)
             
-            value = result.get(folderName,[])
+            value = textos2.get(folderName,[])
             value.append(readFile(newPath))
-            result[folderName] = value
+            textos2[folderName] = value
         else:
-            readAllFiles(newPath)    
-
-    return result
+            readAllFilesNotFlat(newPath)    
+    return textos2
 
 def writeFile(path, source):
     thePath = os.path.join(script_dir, path)
