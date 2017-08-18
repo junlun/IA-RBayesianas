@@ -37,11 +37,10 @@ def readAllFiles(path):
 
     return textos
 def readAllFilesNotFlat(path):
-    return __readAllFilesNotFlatPrivate(path,True)
+    return __readAllFilesNotFlatPrivate(path,dict())
 
-def __readAllFilesNotFlatPrivate(path,firsTime):
-    if(firsTime):
-        textos2=dict()
+def __readAllFilesNotFlatPrivate(path,textos2):
+   
     basePath = path
     names = os.listdir(path)
     
@@ -54,7 +53,7 @@ def __readAllFilesNotFlatPrivate(path,firsTime):
             value.append(readFile(newPath))
             textos2[folderName] = value
         else:
-            __readAllFilesNotFlatPrivate(newPath,False)    
+            __readAllFilesNotFlatPrivate(newPath,textos2)    
     return textos2
 
 def readAllFilesFileNames(path):
