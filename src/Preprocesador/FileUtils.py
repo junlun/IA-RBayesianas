@@ -62,8 +62,9 @@ def writeFile(path, source):
 def getNumberOfDocuments(path):
     count = 0
     dict = readAllFilesNotFlat(path)
-    for pair in dict:
-        count += pair[1].size()
+    for pair in dict.items():
+        count += len(pair[1])
+    print (count)
     return count
 
 def countWordInText(word, text):
@@ -74,3 +75,5 @@ def countWordInText(word, text):
 
     print(res)
     return res
+
+getNumberOfDocuments("resources\\data\\training")
