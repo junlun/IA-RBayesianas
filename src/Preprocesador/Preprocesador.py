@@ -10,7 +10,7 @@ def createDictionaries():
 def createDictionary(category, text):
     text = PreprocesadorUtils.discriminator(text)
     counter = PreprocesadorUtils.counter(text)
-    pairs = counter.most_common(20)
+    pairs = counter.most_common(50)
     texto = ""
     for pair in pairs:
         texto += pair[0] + "\n"

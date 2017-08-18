@@ -7,8 +7,9 @@ def discriminator(text):
     words = re.findall('\w+', file)
     
     for word in words:
-        if word in text:
-            text = text.replace(word, '')
+        s = ' ' + word + ' '
+        if s in text:
+            text = text.replace(s, '')
     return text
 
 def counter(text):
