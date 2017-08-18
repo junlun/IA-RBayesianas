@@ -82,7 +82,6 @@ def getNumberOfDocuments(path):
     dict = readAllFilesNotFlat(path)
     for pair in dict.items():
         count += len(pair[1])
-    print (count)
     return count
 
 def countWordInText(word, text):
@@ -91,7 +90,4 @@ def countWordInText(word, text):
     if word in count.keys():
         res = count.get(word)
 
-    print(res)
     return res
-
-getNumberOfDocuments("resources\\data\\training")
