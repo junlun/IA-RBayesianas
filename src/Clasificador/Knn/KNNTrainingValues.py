@@ -8,14 +8,14 @@ import src.InicializadorDatos as data
 pathToData = "src\\Clasificador\\Knn\\trainingValues.txt"
 pathToDictionaries = "resources\\data\\dictionaries"
 vectores = dict()
-
+data = data.Data()
 
 class KNNTrainingValues:
     def __init__(self):
         self.keywords = data.getTermsPlain()
         #self.keywords = fu.readAllFiles(pathToDictionaries)["dictionaries"].split("\r\n")
         #self.keywords=self.keywords[0:len(self.keywords)-1]
-        self.texts = data.trainingTexts
+        self.texts = data.getTrainingTexts()
         self.frecuenciasDocumentales=calcularFrecuenciasDocumentalsIniciales(self.keywords,self.texts)
         self.vectores = inicializar()
 
