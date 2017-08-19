@@ -1,13 +1,26 @@
-import KNNTrainingValues as vectores
+import KNNTrainingValues as knntv
 import math
 from operator import mul
 
-values = vectores.inicializar()
-  
-def distancia(d1,d2):
-    v1 = [float(i.strip()) for i in values[d1]]
-    v2 = [float(i.strip()) for i in values[d2]]
-    
+tv = knntv.KNNTrainingValues()
+
+
+def clasifica(text):
+    #Obtenemos el vector asociado al nuevo texto
+    v1 = calculaFrecuenciaDocumentalNueva(text)
+    categorias = []
+    #Primero buscamos los N vecinos mas cercanos
+    #for k,v in values.items():
+
+    return None
+
+
+def distanciaDocumentos(d1,d2):
+    v1 = [float(i.strip()) for i in tv.vectores[d1]]
+    v2 = [float(i.strip()) for i in tv.vectores[d2]]
+    return __distancia(v1,v2)
+
+def __distancia(v1,v2):    
     numerador = sum(map(mul, v1, v2))
     if(numerador !=0): #Si el numerador es 0, el numerador también lo será, además ya sabemos el resultado.
         raiz1 = math.sqrt(sum(map(mul,v1,v1)))
@@ -16,3 +29,14 @@ def distancia(d1,d2):
     else:
         dist = 0    
     return dist
+
+def calculaFrecuenciaDocumentalNueva(text):
+    result = []
+    keywords = tv.keywords
+    fDocumentales = tv.frecuenciasDocumentales
+    for keyword in keywords:
+        result.append(knntv.calculaPesoDocumento(keyword,text,fDocumentales[keyword]))
+    return result
+
+print(calculaFrecuenciaDocumentalNueva("amor espíritu"))
+#print(tv.keywords)
