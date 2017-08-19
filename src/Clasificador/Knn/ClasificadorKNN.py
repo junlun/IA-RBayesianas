@@ -56,6 +56,8 @@ def calculaFrecuenciaDocumentalNueva(text):
         result.append(knntv.calculaPesoDocumento(keyword,text,fDocumentales[keyword]))
     return result
 
-
 print(clasifica("resources\\data\\dictionaries\\romantica.txt"))
+print(clasifica("resources\\data\\dictionaries\\historia.txt"))
+print(clasifica("resources\\data\\dictionaries\\terror.txt"))
+print(clasifica("resources\\data\\dictionaries\\cienciaFiccion.txt"))
 print(clasifica("cabaña tiburón casa pesadilla espíritu muertos"))

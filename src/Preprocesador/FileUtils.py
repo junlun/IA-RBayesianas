@@ -6,11 +6,8 @@ import collections
 script_path = os.path.abspath(__file__) # i.e. /path/to/dir/foobar.py
 script_dir = os.path.split(script_path)[0] #i.e. /path/to/dir/
 script_dir = script_dir.replace("\src\Preprocesador","")
-textos = dict()
-textos2 = dict()
-textos3 = dict()
 
-
+#Accede a la ruta dada y devuelve las lineas leidas del fichero.
 def readFile(path):
     thePath = os.path.join(script_dir, path)
     file=codecs.open(thePath,"r",encoding='utf-8')
@@ -18,9 +15,14 @@ def readFile(path):
     file.close()
 
     return lines 
+
+#Busca de manera recursiva todos los ficheros en la ruta dada, devuelve un dicccionario key: nombre de la carpeta,
+#  value: textos de los ficheros dentro de la carpeta concatenados en un solo string
 def readAllFiles(path):
     return __readAllFiles(path,dict())
 
+#Busca de manera recursiva todos los ficheros en la ruta dada, devuelve un dicccionario key: nombre de la carpeta,
+#  value: textos de los ficheros dentro de la carpeta concatenados en un solo string
 def __readAllFiles(path,textos):
     
     basePath = path
@@ -38,9 +40,13 @@ def __readAllFiles(path,textos):
             __readAllFiles(newPath,textos)    
     return textos
 
+#Busca de manera recursiva todos los ficheros en la ruta dada, devuelve un dicccionario key: nombre de la carpeta,
+#  value: textos de los ficheros dentro de la carpeta
 def readAllFilesNotFlat(path):
     return __readAllFilesNotFlatPrivate(path,dict())
 
+#Busca de manera recursiva todos los ficheros en la ruta dada, devuelve un dicccionario key: nombre de la carpeta,
+#  value: textos de los ficheros dentro de la carpeta
 def __readAllFilesNotFlatPrivate(path,textos2):
    
     basePath = path
@@ -58,9 +64,11 @@ def __readAllFilesNotFlatPrivate(path,textos2):
             __readAllFilesNotFlatPrivate(newPath,textos2)    
     return textos2
 
+#Busca de manera recursiva todos los ficheros en la ruta dada, devuelve un dicccionario key: nombre del fichero, value: texto del fichero
 def readAllFilesFileNames(path):
     return __readAllFilesFileNames(path,dict())
 
+#Busca de manera recursiva todos los ficheros en la ruta dada, devuelve un dicccionario key: nombre del fichero, value: texto del fichero
 def __readAllFilesFileNames(path,textos3):
     basePath = path
     names = os.listdir(path)
@@ -77,20 +85,20 @@ def __readAllFilesFileNames(path,textos3):
             __readAllFilesFileNames(newPath,textos3)  
          
     return textos3
-
+#Esribe source en el fichero de ruta dada
 def writeFile(path, source):
     thePath = os.path.join(script_dir, path)
     file=codecs.open(thePath,"w+",encoding='utf-8')
     file.write(source)
     file.close()
-
+#Devuelve el numero de documentos que hay en la ruta aportada
 def getNumberOfDocuments(path):
     count = 0
     dict = readAllFilesNotFlat(path)
     for pair in dict.items():
-        count += len(pair[1])
+        count += len(pair[1]) 
     return count
-
+#Devulve un contador que contiene las ocurrencias de cada palabra en el texto dado
 def countWordInText(word, text):
     res = 0
     count = collections.Counter(text.split())
