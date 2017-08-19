@@ -26,8 +26,10 @@ class Data:
     def getTermsPlain(self):
         result = []
         for k,v in self.keywords.items():
-            for term in v:        
-                result.append(term)
+            for line in v:
+                spl = line.splitlines()
+                for term in spl:
+                    result.append(term)
         return result        
 
 def readVocabulary():
