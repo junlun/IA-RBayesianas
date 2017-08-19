@@ -28,7 +28,3 @@ def clasifica(texto):
             res = categoria
 
     return res
-    
-
-res = clasifica("resources\\prueba.txt")
-print(res)

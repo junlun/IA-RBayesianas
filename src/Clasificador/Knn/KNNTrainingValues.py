@@ -10,6 +10,7 @@ pathToDictionaries = "resources\\data\\dictionaries"
 vectores = dict()
 data = data.Data()
 
+
 class KNNTrainingValues:
     def __init__(self):
         self.keywords = data.getTermsPlain()
