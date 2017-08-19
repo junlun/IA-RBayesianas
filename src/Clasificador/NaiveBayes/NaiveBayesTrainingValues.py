@@ -2,40 +2,61 @@ import sys
 import os.path
 sys.path.append(os.path.realpath("."))
 import src.Preprocesador.FileUtils as fu
-import math 
+import src.InicializadorDatos as data
+
 
 N = fu.getNumberOfDocuments("resources\\data\\training") #Número total de documentos del conjunto de entrenamiento
+data = data.Data()
+
+class NaiveBayesTrainingValues:
+
+    def __init__(self):
+        self.probabilidades = leeValores()
+
+    def getProbabilidades(self):
+        return self.probabilidades
 
 def generaValores():
     textosPorCategoria = fu.readAllFiles("resources\\data\\training")
     text = ""
     for categoria in textosPorCategoria.items():
-        text += generaTexto(categoria)
+        text += __generaTexto(categoria)
     
     fu.writeFile("src\\Clasificador\\NaiveBayes\\trainingValues.txt", text)
 
-def generaTexto(categoria):
+def __generaTexto(categoria):
     text = categoria[0] + ", "
     Nc = fu.getNumberOfDocuments("resources\\data\\training\\" + categoria[0]) #Número de documentos de la categoría en el conjunto de entrenamiento
     pc = round(Nc/N, 4)
     text += str(pc) + ", "
-    ptc = calculaPtc(categoria)
-    ptc = ptc[0:len(ptc)-2]
+    ptc = __calculaPtc(categoria)
+    ptc = ptc[0:len(ptc)-2] #Quita los dos últimos caracteres del string (", ")
     text += str(ptc) + "\n"
 
     return text
 
-def calculaPtc(categoria):
-    lines = fu.readFile("resources\\data\\dictionaries\\" + categoria[0] + ".txt")
-    textosAplanados = fu.readAllFiles("resources\\data\\training\\" + categoria[0])
+def __calculaPtc(categoria):
+    vocabulary = data.getTermsPlain()
+    textosAplanados = data.getTextOfCategoryPlain(categoria[0])
     tcs = 0
     text = ""
-    for t in lines.split():
-        tcs += fu.countWordInText(t, textosAplanados.get(categoria[0])) #Suma todas las apariciones de todos los términos
-    for t in lines.split():
-        tct = fu.countWordInText(t, textosAplanados.get(categoria[0])) #Cuenta todas las apariciones de cada término
-        text += str(round((tct+1) / (tcs+len(lines.split())), 4)) + ", "
-
+    for t in vocabulary:
+        tcs += fu.countWordInText(t, textosAplanados) + 1 #Suma de apariciones de todos los términos del vocabulario en los documentos de la categoría
+    for t in vocabulary:
+        tct = fu.countWordInText(t, textosAplanados) + 1 #Cuenta todas las apariciones de cada término del vocabulario en la categoría
+        text += str(round(tct/tcs, 4)) + ", "
     return text
+
+def leeValores():
+    probs = dict()
+    lines = fu.readFile("src\\Clasificador\\NaiveBayes\\trainingValues.txt")
+    lines = lines.splitlines()
+    for line in lines:
+        spl = line.split(',')
+        name = spl[0]
+        values = spl[1:len(spl)]
+        probs[name]=values
+
+    return probs
 
 generaValores()
