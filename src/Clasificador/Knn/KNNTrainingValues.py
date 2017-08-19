@@ -26,7 +26,7 @@ def inicializar():
         name = spl[1]
         id = category+"-"+name
         values = spl[2:len(spl)]
-        vectores[id]= values
+        vectores[id]=[float(i.strip()) for i in values]
     return vectores
 
 #Dados los terminos, los documentos de entrenamiento y el diccionario de frecuencias documentales, escribe el fichero de vectores

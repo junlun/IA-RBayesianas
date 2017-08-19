@@ -98,3 +98,12 @@ def countWordInText(word, text):
         res = count.get(word)
 
     return res
+
+#Comprueba si el string aportado es una dirección relativa desde la raiz del proyecto, en cuyo caso, la abre.
+def urlchecker(url):
+    result = url
+    parts = url.split(".")
+    if parts[-1] == "txt":
+        result = readFile(url)
+    return result    
+

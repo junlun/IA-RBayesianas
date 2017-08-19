@@ -1,26 +1,44 @@
 import KNNTrainingValues as knntv
 import math
+import types
+import operator
 from operator import mul
+import src.Preprocesador.PreprocesadorUtils  as putils
+from urllib.parse import urlparse
+import src.Preprocesador.FileUtils as fu
 
 tv = knntv.KNNTrainingValues()
 
-
-def clasifica(text):
+#Clasifica un text con un número de vecinos N, por defecto 30
+def clasifica(text,N=30):
+    text = fu.urlchecker(text)
     #Obtenemos el vector asociado al nuevo texto
     v1 = calculaFrecuenciaDocumentalNueva(text)
-    categorias = []
+    
+    categorias = dict()
+    result = ""
     #Primero buscamos los N vecinos mas cercanos
-    #for k,v in values.items():
+    for k,v in tv.vectores.items():
+        categorias[k]=__similitud(v,v1)
 
-    return None
+    #Ordenamos la lista según la similitud obtenida de mayor similitud a menor
+    sorted_cat = sorted(categorias.items(), key=operator.itemgetter(1),reverse=True)
+    sorted_cat=sorted_cat[0:N]
+    
+    #Nos quedamos con la categoría del elemento
+    for i in sorted_cat:
+        result+=i[0].split("-")[0] +" "  
+
+    #Cogemos la categoría más repetida.
+    return putils.counter(result).most_common(1)[0][0]
 
 
 def distanciaDocumentos(d1,d2):
     v1 = [float(i.strip()) for i in tv.vectores[d1]]
     v2 = [float(i.strip()) for i in tv.vectores[d2]]
-    return __distancia(v1,v2)
+    return __similitud(v1,v2)
 
-def __distancia(v1,v2):    
+def __similitud(v1,v2):    
     numerador = sum(map(mul, v1, v2))
     if(numerador !=0): #Si el numerador es 0, el numerador también lo será, además ya sabemos el resultado.
         raiz1 = math.sqrt(sum(map(mul,v1,v1)))
@@ -38,5 +56,6 @@ def calculaFrecuenciaDocumentalNueva(text):
         result.append(knntv.calculaPesoDocumento(keyword,text,fDocumentales[keyword]))
     return result
 
-print(calculaFrecuenciaDocumentalNueva("amor espíritu"))
-#print(tv.keywords)
+
+print(clasifica("resources\\data\\dictionaries\\romantica.txt"))
+print(clasifica("cabaña tiburón casa pesadilla espíritu muertos"))

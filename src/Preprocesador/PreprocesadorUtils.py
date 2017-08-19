@@ -1,6 +1,9 @@
 import re
 import collections
-import FileUtils
+import sys
+import os.path
+sys.path.append(os.path.realpath('.'))
+import src.Preprocesador.FileUtils as FileUtils
 
 def discriminator(text):
     file = FileUtils.readFile("resources\\discriminator.txt")
