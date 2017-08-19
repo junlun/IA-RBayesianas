@@ -8,7 +8,7 @@ import src.InicializadorDatos as data
 pathToData = "src\\Clasificador\\Knn\\trainingValues.txt"
 pathToDictionaries = "resources\\data\\dictionaries"
 vectores = dict()
-data = data.Data()
+
 
 class KNNTrainingValues:
     def __init__(self):
