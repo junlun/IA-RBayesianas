@@ -11,10 +11,8 @@ vectores = dict()
 data = data.Data()
 class KNNTrainingValues:
     def __init__(self):
-        #self.keywords = data.getTermsPlain()
-        self.keywords = fu.readAllFiles(pathToDictionaries)["dictionaries"].split("\r\n")
-        self.keywords=self.keywords[0:len(self.keywords)-1]
-        self.texts = fu.readAllFilesFileNames("resources\\data\\training")
+        self.keywords = data.getTermsPlain()
+        self.texts = data.trainingTexts
         self.frecuenciasDocumentales=calcularFrecuenciasDocumentalsIniciales(self.keywords,self.texts)
         self.vectores = inicializar()
 

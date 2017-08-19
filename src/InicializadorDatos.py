@@ -17,6 +17,12 @@ class Data:
     def getTermsOfVocabulary(self,category):
         return self.keywords[category]
 
+    def getTextOfCategoryPlain(self,category):
+        result =""
+        for k,v in self.trainingTexts[category].items():
+            result+= v+" "
+        return result    
+
     def getTermsPlain(self):
         result = []
         for k,v in self.keywords.items():
