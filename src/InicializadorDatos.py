@@ -1,7 +1,7 @@
 import sys
 import os.path
 sys.path.append(os.path.realpath('.'))
-import src.Preprocesador.FileUtils as fu
+import Preprocesador.FileUtils as fu
 pathToDictionaries = "resources\\data\\dictionaries"
 pathToTraining = "resources\\data\\training"
 

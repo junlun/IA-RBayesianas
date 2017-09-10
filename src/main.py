@@ -1,10 +1,11 @@
 import sys
 import os.path
+
 sys.path.append(os.path.realpath("."))
-import src.Preprocesador as fu
-import src.Clasificador.Knn as knn
-import src.Clasificador.NaiveBayes as naive
-import src.test.Tester as test
+import Preprocesador as fu
+import Clasificador.Knn as knn
+import Clasificador.NaiveBayes as naive
+import test.Tester as test
 
 
 def main():

@@ -3,7 +3,7 @@ import collections
 import sys
 import os.path
 sys.path.append(os.path.realpath('.'))
-import src.Preprocesador.FileUtils as FileUtils
+import Preprocesador.FileUtils as FileUtils
 
 def discriminator(text):
     file = FileUtils.readFile("resources\\discriminator.txt")

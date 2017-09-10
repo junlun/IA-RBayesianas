@@ -1,9 +1,9 @@
 import sys
 import os.path
 sys.path.append(os.path.realpath('.'))
-import src.Preprocesador.FileUtils as fu
+import Preprocesador.FileUtils as fu
 import math
-import src.InicializadorDatos as data
+import InicializadorDatos as data
 
 pathToData = "src\\Clasificador\\Knn\\trainingValues.txt"
 pathToDictionaries = "resources\\data\\dictionaries"
