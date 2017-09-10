@@ -2,10 +2,11 @@ import sys
 import os.path
 
 sys.path.append(os.path.realpath("."))
-import Preprocesador as fu
-import Clasificador.Knn as knn
-import Clasificador.NaiveBayes as naive
-import test.Tester as test
+print(sys.path)
+import src.Preprocesador as fu
+import src.Clasificador.Knn as knn
+import src.Clasificador.NaiveBayes as naive
+import src.test.Tester as test
 
 
 def main():
@@ -65,16 +66,13 @@ def main():
         n = input("Introduzca el número de vecinos deseado para el cálculo del KNN (por defecto 30): ")
         verbose = input("¿Desea ver la estructura de clasificacion? S/N: ")
         verbose = verbose == "S"
-<<<<<<< Updated upstream
-        test.testKnn(verbose)
+        test.testKnn(verbose, n)
     if selection == 8:
         print("Refrescando pesos... ")
         knn.ClasificadorKNN.refrescaPesos()      
         naive.NaiveBayesTrainingValues.generaValores()
         print("pesos correctamente refrescados")        
-=======
-        test.testKnn(verbose, n)          
->>>>>>> Stashed changes
+       
 
 while True:
     main()

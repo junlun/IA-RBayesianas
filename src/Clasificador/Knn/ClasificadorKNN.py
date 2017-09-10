@@ -1,14 +1,14 @@
 import sys
 import os.path
 sys.path.append(os.path.realpath("."))
-import Clasificador.Knn.KNNTrainingValues as knntv
+import src.Clasificador.Knn.KNNTrainingValues as knntv
 import math
 import types
 import operator
 from operator import mul
 import src.Preprocesador.PreprocesadorUtils  as putils
 from urllib.parse import urlparse
-import Preprocesador.FileUtils as fu
+import src.Preprocesador.FileUtils as fu
 
 tv = knntv.KNNTrainingValues()
 
