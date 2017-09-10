@@ -58,3 +58,6 @@ def calculaFrecuenciaDocumentalNueva(text):
     for keyword in keywords:
         result.append(knntv.calculaPesoDocumento(keyword,text,fDocumentales[keyword]))
     return result
+
+def refrescaPesos():
+    knntv.escribePesos(tv.keywords,tv.texts,tv.frecuenciasDocumentales)

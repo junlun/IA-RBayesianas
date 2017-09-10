@@ -12,7 +12,7 @@ def main():
     messages = ["Generar diccionarios automáticamente","Clasificar desde consola con ambos algoritmos",
     "Clasificar textos de la carpeta test con ambos algoritmos","Clasificar un texto desde consola con Naive Bayes",
     "Clasificar un texto desde consola con Knn","Clasificar los textos de la carpeta test con Naive Bayes",
-    "Clasificar los textos de la carpeta test con Knn"]
+    "Clasificar los textos de la carpeta test con Knn","Recalcular Pesos de ambos algoritmos"]
     print("seleccione acción a realizar:")
     for i, m in enumerate(messages):
         print(i+1,". ", m)
@@ -56,7 +56,12 @@ def main():
     if selection == 7:
         verbose = input("desea ver la estructura de clasificacion? S/N ")
         verbose = verbose == "S"
-        test.testKnn(verbose)          
+        test.testKnn(verbose)
+    if selection == 8:
+        print("Refrescando pesos... ")
+        knn.ClasificadorKNN.refrescaPesos()      
+        naive.NaiveBayesTrainingValues.generaValores()
+        print("pesos correctamente refrescados")        
 
 while True:
     main()
