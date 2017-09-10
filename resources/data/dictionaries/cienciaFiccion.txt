@@ -1,8 +1,6 @@
 nave
 espacial
-muerte
 planeta
-misión
 misterioso
 humanos
 tierra
@@ -15,7 +13,8 @@ exterior
 estación
 viaje
 tiempo
-estrella
 universo
 alienígena
 alienígenas
+astronauta
+astronautas

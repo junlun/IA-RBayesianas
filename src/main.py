@@ -17,51 +17,64 @@ def main():
     for i, m in enumerate(messages):
         print(i+1,". ", m)
 
-    selection = input("opción elegida: ")
+    selection = input("Opción elegida: ")
     selection = int(selection)
     if selection == 1:
         fu.Preprocesador.createDictionaries()
-        print("diccionarios creados")
+        print("Diccionarios creados")
 
     if selection == 2:
-        texto = input("teclee el texto que quiere clasificar o la dirección al mismo desde la raiz del proyecto (ej: resources\\data\\dictionaries\\1.txt) ")
+        texto = input("Teclee el texto que quiere clasificar o la dirección al mismo desde la raiz del proyecto (ej: resources\\data\\dictionaries\\1.txt) ")
+        n = input("Introduzca el número de vecinos deseado para el cálculo del KNN (por defecto 30): ")
         na = naive.ClasificadorNaiveBayes.clasifica(texto)
-        kn = knn.ClasificadorKNN.clasifica(texto)
-        print("resultado con Naive Bayes:")
+        kn = knn.ClasificadorKNN.clasifica(texto, n)
+        print("Resultado con Naive Bayes: ")
         print(na)
-        print("resultado con Knn:")
+        print("Resultado con Knn: ")
         print(kn)
         
     if selection == 3:
-        verbose = input("desea ver la estructura de clasificacion? S/N")
+        n = input("Introduzca el número de vecinos deseado para el cálculo del KNN (por defecto 30): ")
+        if n == "":
+            n = 30
+        else:
+            n = int(n)
+
+        verbose = input("¿Desea ver la estructura de clasificación? S/N: ")
         verbose = verbose == "S"
         print("Knn: ")
-        test.testKnn(verbose)
+        test.testKnn(verbose, n)
         print("Naive Bayes: ")
         test.testNaiveBayes(verbose)
 
     if selection == 4:
-        texto = input("teclee el texto que quiere clasificar o la dirección al mismo desde la raiz del proyecto (ej: resources\\data\\dictionaries\\1.txt) ")
-        print("categoría calculada: ",naive.ClasificadorNaiveBayes.clasifica(texto))
+        texto = input("Teclee el texto que quiere clasificar o la dirección al mismo desde la raíz del proyecto (ej: resources\\data\\dictionaries\\1.txt): ")
+        print("Categoría calculada: ",naive.ClasificadorNaiveBayes.clasifica(texto))
 
     if selection == 5:
-        texto = input("teclee el texto que quiere clasificar o la dirección al mismo desde la raiz del proyecto (ej: resources\\data\\dictionaries\\1.txt) ")
-        print("categoría calculada: ",knn.ClasificadorKNN.clasifica(texto))    
+        texto = input("Teclee el texto que quiere clasificar o la dirección al mismo desde la raiz del proyecto (ej: resources\\data\\dictionaries\\1.txt): ")
+        n = input("Introduzca el número de vecinos deseado para el cálculo del KNN (por defecto 30): ")
+        print("Categoría calculada: ",knn.ClasificadorKNN.clasifica(texto, n))    
 
     if selection == 6:
-        verbose = input("desea ver la estructura de clasificacion? S/N ")
+        verbose = input("¿Desea ver la estructura de clasificacion? S/N: ")
         verbose = verbose == "S"
         test.testNaiveBayes(verbose)
 
     if selection == 7:
-        verbose = input("desea ver la estructura de clasificacion? S/N ")
+        n = input("Introduzca el número de vecinos deseado para el cálculo del KNN (por defecto 30): ")
+        verbose = input("¿Desea ver la estructura de clasificacion? S/N: ")
         verbose = verbose == "S"
+<<<<<<< Updated upstream
         test.testKnn(verbose)
     if selection == 8:
         print("Refrescando pesos... ")
         knn.ClasificadorKNN.refrescaPesos()      
         naive.NaiveBayesTrainingValues.generaValores()
         print("pesos correctamente refrescados")        
+=======
+        test.testKnn(verbose, n)          
+>>>>>>> Stashed changes
 
 while True:
     main()

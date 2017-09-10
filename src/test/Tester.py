@@ -7,15 +7,15 @@ import Clasificador.NaiveBayes.ClasificadorNaiveBayes as naive
 
 pathToTest = "resources\\data\\test"
 
-def testKnn(verbose):
+def testKnn(verbose, N=30):
     testFiles = fu.readAllFilesFileNames(pathToTest)
     
     result = dict()
     numberOfTrues = 0 
     for category,textos in testFiles.items():
         for nombre, texto in textos.items():
-            clase = knn.clasifica(texto)
-            result[category+"-"+nombre] = clase == category
+            clase = knn.clasifica(texto, N)
+            result[category+"-"+nombre] = clase 
             if(clase == category):
                 numberOfTrues = numberOfTrues +1
    
@@ -34,7 +34,7 @@ def testNaiveBayes(verbose):
     for category,textos in testFiles.items():
         for nombre, texto in textos.items():
             clase = naive.clasifica(texto)
-            result[category+"-"+nombre] = clase == category
+            result[category+"-"+nombre] = clase
             if(clase == category):
                 numberOfTrues = numberOfTrues +1
    

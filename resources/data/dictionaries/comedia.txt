@@ -1,6 +1,5 @@
-familia
-amigos
-casa
+cómico 
+cómica
 risa
 comedia
 gracioso
@@ -12,8 +11,8 @@ divertida
 humor
 humorista
 boda
-familiar
 carcajadas
 divertidos
 divertidas
-jóvenes
+hilarante
+hilarantes
