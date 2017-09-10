@@ -6,6 +6,7 @@ producción
 emociones
 familia
 padres
+padre
 pequeño
 madre
 pequeña
@@ -17,3 +18,9 @@ pixar
 dreamworks
 familiar
 pequeños
+joven
+cuento
+cuentos
+infantil
+infantiles
+jóvenes
