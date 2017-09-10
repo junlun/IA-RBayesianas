@@ -1,6 +1,9 @@
+import sys
+import os.path
+sys.path.append(os.path.realpath("."))
 import collections
-import PreprocesadorUtils
-import FileUtils
+import src.Preprocesador.PreprocesadorUtils as PreprocesadorUtils
+import src.Preprocesador.FileUtils as FileUtils
 
 def createDictionaries():
     dictionary = FileUtils.readAllFiles("resources\\data\\training")

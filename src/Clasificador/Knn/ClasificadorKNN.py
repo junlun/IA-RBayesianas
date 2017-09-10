@@ -1,4 +1,7 @@
-import KNNTrainingValues as knntv
+import sys
+import os.path
+sys.path.append(os.path.realpath("."))
+import src.Clasificador.Knn.KNNTrainingValues as knntv
 import math
 import types
 import operator
@@ -21,7 +24,7 @@ def clasifica(text,N=30):
     for k,v in tv.vectores.items():
         categorias[k]=__similitud(v,v1)
 
-    #Ordenamos la lista según la similitud obtenida de mayor similitud a menor
+    #Ordenamos la lista según la similitud obtenida ordenada de mayor similitud a menor
     sorted_cat = sorted(categorias.items(), key=operator.itemgetter(1),reverse=True)
     sorted_cat=sorted_cat[0:N]
     
@@ -55,11 +58,3 @@ def calculaFrecuenciaDocumentalNueva(text):
     for keyword in keywords:
         result.append(knntv.calculaPesoDocumento(keyword,text,fDocumentales[keyword]))
     return result
-
-print(clasifica("resources\\data\\dictionaries\\romantica.txt"))
-print(clasifica("resources\\data\\dictionaries\\historia.txt"))
-print(clasifica("resources\\data\\dictionaries\\terror.txt"))
-print(clasifica("resources\\data\\dictionaries\\cienciaFiccion.txt"))
-print(clasifica("cabaña tiburón casa pesadilla espíritu muertos"))
-print(clasifica("resources\\data\\test\\animacion\\1.txt"))
-print(clasifica("resources\\data\\test\\accion\\1.txt",3))
