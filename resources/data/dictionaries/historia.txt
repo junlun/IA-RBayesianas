@@ -9,8 +9,10 @@ reina
 césar
 isabel
 espartanos
+esparta
 cleopatra
 roma
+romana
 histórico
 histórica
 pasado
@@ -18,3 +20,13 @@ basado
 hechos
 reales
 inspirado
+siglo
+época
+año
+ambientada
+jesucristo
+cristo
+imperio
+egipto
+años
+conquista
