@@ -1,3 +1,5 @@
+ciencia
+ficción
 nave
 espacial
 planeta
@@ -5,7 +7,10 @@ misterioso
 humanos
 tierra
 humana
+humano
+humanidad
 extraterrestre
+extraterrestres
 futuro
 futurista
 espacio
@@ -18,3 +23,18 @@ alienígena
 alienígenas
 astronauta
 astronautas
+robot
+máquina
+virtual
+viajar
+dinosaurio
+dinosaurios
+inteligencia
+artificial
+mente
+subconsciente
+futurista
+apocalíptico
+postapocalíptico
+apocalíptica
+postapocalíptica

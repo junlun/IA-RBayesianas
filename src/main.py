@@ -2,11 +2,10 @@ import sys
 import os.path
 
 sys.path.append(os.path.realpath("."))
-print(sys.path)
-import src.Preprocesador as fu
-import src.Clasificador.Knn as knn
-import src.Clasificador.NaiveBayes as naive
-import src.test.Tester as test
+import Preprocesador as fu
+import Clasificador.Knn as knn
+import Clasificador.NaiveBayes as naive
+import test.Tester as test
 
 
 def main():
@@ -55,6 +54,10 @@ def main():
     if selection == 5:
         texto = input("Teclee el texto que quiere clasificar o la dirección al mismo desde la raiz del proyecto (ej: resources\\data\\dictionaries\\1.txt): ")
         n = input("Introduzca el número de vecinos deseado para el cálculo del KNN (por defecto 30): ")
+        if n == "":
+            n = 30
+        else:
+            n = int(n)
         print("Categoría calculada: ",knn.ClasificadorKNN.clasifica(texto, n))    
 
     if selection == 6:
@@ -64,6 +67,10 @@ def main():
 
     if selection == 7:
         n = input("Introduzca el número de vecinos deseado para el cálculo del KNN (por defecto 30): ")
+        if n == "":
+            n = 30
+        else:
+            n = int(n)
         verbose = input("¿Desea ver la estructura de clasificacion? S/N: ")
         verbose = verbose == "S"
         test.testKnn(verbose, n)
