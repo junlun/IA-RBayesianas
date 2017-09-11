@@ -61,3 +61,4 @@ def calculaFrecuenciaDocumentalNueva(text):
 
 def refrescaPesos():
     knntv.escribePesos(tv.keywords,tv.texts,tv.frecuenciasDocumentales)
+

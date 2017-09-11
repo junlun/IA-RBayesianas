@@ -25,6 +25,21 @@ def testKnn(verbose, N=30):
     if(verbose):
         print(result)
     return result
+def _testKnn(N=30):
+    testFiles = fu.readAllFilesFileNames(pathToTest)
+    
+    result = dict()
+    numberOfTrues = 0 
+    for category,textos in testFiles.items():
+        for nombre, texto in textos.items():
+            clase = knn.clasifica(texto, N)
+            result[category+"-"+nombre] = clase 
+            if(clase == category):
+                numberOfTrues = numberOfTrues +1
+   
+   
+    percentage = numberOfTrues/len(result.keys())*100
+    return percentage
 
 def testNaiveBayes(verbose):
     testFiles = fu.readAllFilesFileNames(pathToTest)
@@ -44,3 +59,16 @@ def testNaiveBayes(verbose):
     if(verbose):
         print(result)   
     return result
+
+def optimiceN():
+    maxPercentage = 0
+    maxI = -1
+    for i in range(1,101):
+        sys.stdout.write("Progreso: %d%%   \r" % (i) )
+        sys.stdout.flush()
+        newPercentage = _testKnn(i)
+        if(newPercentage> maxPercentage):
+            maxPercentage = newPercentage
+            maxI = i
+    print("mejor valor de N encontrado en el rago [1,100]: ",maxI," con porcentaje de acierto", maxPercentage)        
+    return maxPercentage
