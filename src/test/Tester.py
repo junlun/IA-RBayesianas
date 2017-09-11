@@ -62,7 +62,9 @@ def testNaiveBayes(verbose):
 
 def optimiceN():
     maxPercentage = 0
+    minPercetage = 101
     maxI = -1
+    minI = 200
     for i in range(1,101):
         sys.stdout.write("Progreso: %d%%   \r" % (i) )
         sys.stdout.flush()
@@ -70,5 +72,9 @@ def optimiceN():
         if(newPercentage> maxPercentage):
             maxPercentage = newPercentage
             maxI = i
+        if(newPercentage < minPercetage):
+            minPercentage = newPercentage
+            minI = i
     print("mejor valor de N encontrado en el rago [1,100]: ",maxI," con porcentaje de acierto", maxPercentage)        
+    print("peor valor de N encontrado en el rago [1,100]: ",minI," con porcentaje de acierto", minPercentage)        
     return maxPercentage
