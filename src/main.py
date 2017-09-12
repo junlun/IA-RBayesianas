@@ -1,9 +1,7 @@
 import sys
 import os.path
-print(sys.path)
 sys.path.append(os.path.realpath("."))
-print(os.path.realpath("."))
-import Preprocesador as pre
+from Preprocesador import Preprocesador as pre
 import Clasificador.Knn as knn
 import Clasificador.NaiveBayes as naive
 import test.Tester as test
@@ -15,19 +13,29 @@ def main():
     "Clasificar un texto desde consola con Knn","Clasificar los textos de la carpeta test con Naive Bayes",
     "Clasificar los textos de la carpeta test con Knn","Recalcular Pesos de ambos algoritmos",
     "Buscar la N óptima para Knn con el conjunto de test"]
-    print("seleccione acción a realizar:")
+    print("Seleccione acción a realizar:")
     for i, m in enumerate(messages):
         print(i+1,". ", m)
 
     selection = input("Opción elegida: ")
     selection = int(selection)
+
     if selection == 1:
-        pre.createDictionaries()
+        n = input("Introduzca el número de palabras que contendrán los diccionarios (por defecto 20): ")
+        if n == "":
+            n = 20
+        else:
+            n = int(n)
+        pre.createDictionaries(n)
         print("Diccionarios creados")
 
     if selection == 2:
         texto = input("Teclee el texto que quiere clasificar o la dirección al mismo desde la raiz del proyecto (ej: resources\\data\\dictionaries\\1.txt) ")
         n = input("Introduzca el número de vecinos deseado para el cálculo del KNN (por defecto 30): ")
+        if n != "":
+            n = 30
+        else:
+            n = int(n)
         na = naive.ClasificadorNaiveBayes.clasifica(texto)
         kn = knn.ClasificadorKNN.clasifica(texto, n)
         print("Resultado con Naive Bayes: ")
@@ -43,7 +51,7 @@ def main():
             n = int(n)
 
         verbose = input("¿Desea ver la estructura de clasificación? S/N: ")
-        verbose = verbose == "S"
+        verbose = str(verbose).upper() == "S"
         print("Knn: ")
         test.testKnn(verbose, n)
         print("Naive Bayes: ")
@@ -64,7 +72,7 @@ def main():
 
     if selection == 6:
         verbose = input("¿Desea ver la estructura de clasificacion? S/N: ")
-        verbose = verbose == "S"
+        verbose = str(verbose).upper() == "S"
         test.testNaiveBayes(verbose)
 
     if selection == 7:
@@ -74,7 +82,7 @@ def main():
         else:
             n = int(n)
         verbose = input("¿Desea ver la estructura de clasificacion? S/N: ")
-        verbose = verbose == "S"
+        verbose = str(verbose).upper() == "S"
         test.testKnn(verbose, n)
     if selection == 8:
         print("Refrescando pesos... ")
