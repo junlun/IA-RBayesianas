@@ -1,8 +1,9 @@
 import sys
 import os.path
-
+print(sys.path)
 sys.path.append(os.path.realpath("."))
-import Preprocesador as fu
+print(os.path.realpath("."))
+from Preprocesador import Preprocesador as fu
 import Clasificador.Knn as knn
 import Clasificador.NaiveBayes as naive
 import test.Tester as test
@@ -21,7 +22,7 @@ def main():
     selection = input("Opción elegida: ")
     selection = int(selection)
     if selection == 1:
-        fu.Preprocesador.createDictionaries()
+        fu.createDictionaries()
         print("Diccionarios creados")
 
     if selection == 2:

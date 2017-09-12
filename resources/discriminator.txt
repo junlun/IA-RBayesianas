@@ -1,4 +1,4 @@
-a
+﻿a
 ante
 bajo
 con
@@ -79,6 +79,7 @@ una
 no
 es
 le
+les
 como
 pero
 más
@@ -89,3 +90,7 @@ lo
 cuando
 han
 está
+éste
+hace
+donde
+qué

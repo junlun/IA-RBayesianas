@@ -1,8 +1,8 @@
 import sys
 import os.path
 sys.path.append(os.path.realpath("."))
-import Preprocesador.FileUtils as fu
-import InicializadorDatos as data
+import src.Preprocesador.FileUtils as fu
+import src.InicializadorDatos as data
 
 
 N = fu.getNumberOfDocuments("resources\\data\\training") #Número total de documentos del conjunto de entrenamiento
@@ -58,5 +58,3 @@ def leeValores():
         probs[name]=values
 
     return probs
-
-generaValores()

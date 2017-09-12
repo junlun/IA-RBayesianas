@@ -88,7 +88,7 @@ def __readAllFilesFileNames(path,textos3):
 #Esribe source en el fichero de ruta dada
 def writeFile(path, source):
     thePath = os.path.join(script_dir, path)
-    file=codecs.open(thePath,"w+",encoding='utf-8')
+    file=codecs.open(thePath,"w+", encoding="utf-8")
     file.write(source)
     file.close()
 #Devuelve el numero de documentos que hay en la ruta aportada
