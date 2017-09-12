@@ -25,6 +25,7 @@ def testKnn(verbose, N=30):
     if(verbose):
         print(result)
     return result
+
 def _testKnn(N=30):
     testFiles = fu.readAllFilesFileNames(pathToTest)
     

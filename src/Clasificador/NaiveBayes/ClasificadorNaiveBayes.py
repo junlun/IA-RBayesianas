@@ -9,7 +9,7 @@ import InicializadorDatos as data
 probabilidades = nb.NaiveBayesTrainingValues().getProbabilidades()
 data = data.Data()
 
-
+#Calcula y clasifica un texto dado utilizando Naive Bayes
 def clasifica(texto):
     texto = fu.urlchecker(texto)
     max = float('-inf')

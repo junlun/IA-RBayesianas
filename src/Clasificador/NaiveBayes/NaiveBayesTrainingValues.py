@@ -16,6 +16,7 @@ class NaiveBayesTrainingValues:
     def getProbabilidades(self):
         return self.probabilidades
 
+#Lee los textos de entrenamiento y escribe los valores calculados en un fichero
 def generaValores():
     textosPorCategoria = fu.readAllFiles("resources\\data\\training")
     text = ""
@@ -24,6 +25,8 @@ def generaValores():
     
     fu.writeFile("src\\Clasificador\\NaiveBayes\\trainingValues.txt", text)
 
+#Genera y devuelve el texto que se escribirá en el fichero de valores con el siguiente formato:
+#Categoría, Pc, Pt(c)1, Pt(c)2, ... , Pt(c)n
 def __generaTexto(categoria):
     text = categoria[0] + ", "
     Nc = fu.getNumberOfDocuments("resources\\data\\training\\" + categoria[0]) #Número de documentos de la categoría en el conjunto de entrenamiento
@@ -35,6 +38,7 @@ def __generaTexto(categoria):
 
     return text
 
+#Calcula y devuelve los valores de Pt(c) asociados a Naive Bayes
 def __calculaPtc(categoria):
     vocabulary = data.getTermsPlain()
     textosAplanados = data.getTextOfCategoryPlain(categoria[0])
