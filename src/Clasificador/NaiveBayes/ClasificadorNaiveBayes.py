@@ -18,7 +18,7 @@ def clasifica(texto):
         product = 1
         categoria = p[0]
         pc = float(p[1][0]) #P(c) obtenido del fichero de entrenamiento
-        vocabulary = data.getTermsPlain()
+        vocabulary = data.getTermsPlain() #vocabulary = Todos los vocabularios aplanados en uno solo
         for word in vocabulary:
             if word in texto.split():
                 numApariciones = fu.countWordInText(word, texto)

@@ -111,9 +111,9 @@ def main():
         print("Refrescando pesos... ")
         knn.ClasificadorKNN.refrescaPesos()      
         naive.NaiveBayesTrainingValues.generaValores()
-        print("pesos correctamente refrescados")   
+        print("Pesos correctamente refrescados")   
     if selection == 9:
-        print("optimizando N para el conjunto de test...")
+        print("Optimizando N para el conjunto de test...")
         test.optimiceN()         
        
 
