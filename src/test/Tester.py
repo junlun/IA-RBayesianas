@@ -1,9 +1,9 @@
 import sys
 import os.path
 sys.path.append(os.path.realpath("."))
-import src.Preprocesador.FileUtils as fu
-import src.Clasificador.Knn.ClasificadorKNN as knn
-import src.Clasificador.NaiveBayes.ClasificadorNaiveBayes as naive
+import Preprocesador.FileUtils as fu
+import Clasificador.Knn.ClasificadorKNN as knn
+import Clasificador.NaiveBayes.ClasificadorNaiveBayes as naive
 
 pathToTest = "resources\\data\\test"
 

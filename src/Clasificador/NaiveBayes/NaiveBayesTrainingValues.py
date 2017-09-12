@@ -1,8 +1,8 @@
 import sys
 import os.path
 sys.path.append(os.path.realpath("."))
-import src.Preprocesador.FileUtils as fu
-import src.InicializadorDatos as data
+import Preprocesador.FileUtils as fu
+import InicializadorDatos as data
 
 
 N = fu.getNumberOfDocuments("resources\\data\\training") #Número total de documentos del conjunto de entrenamiento

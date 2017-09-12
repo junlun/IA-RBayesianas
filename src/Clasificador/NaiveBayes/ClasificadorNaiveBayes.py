@@ -1,10 +1,10 @@
 import sys
 import os.path
 sys.path.append(os.path.realpath("."))
-import src.Preprocesador.FileUtils as fu
+import Preprocesador.FileUtils as fu
 import math
-import src.Clasificador.NaiveBayes.NaiveBayesTrainingValues as nb
-import src.InicializadorDatos as data
+import Clasificador.NaiveBayes.NaiveBayesTrainingValues as nb
+import InicializadorDatos as data
 
 probabilidades = nb.NaiveBayesTrainingValues().getProbabilidades()
 data = data.Data()
